@@ -1,0 +1,15 @@
+
+<div class="panel-body">
+    <div class="list-group">
+        <div *ngFor="let item of products" class="list-group-item">
+                <img src="../../assets/1200px-Image_created_with_a_mobile_phone.png" width="80" height="80"/>
+                <div class="caption">
+                    <h4>{{item.name}}</h4>
+                    <p>{{item.price | currency: 'USD'}}</p>
+                    <p>Qty: {{item.quantity}}</p>
+                    <p>Color: {{item.color}}</p>
+                    <button type="button" class="btn btn-success" (click)="increaseQty(item)">Add</button>
+                </div>
+        </div>
+    </div>
+</div>

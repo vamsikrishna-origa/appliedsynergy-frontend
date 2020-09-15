@@ -1,0 +1,59 @@
+<div class="center">
+    <input type="text" placeholder="search" [(ngModel)]="name" (keyup)="search()"/>
+    <button type="button" class="btn" data-toggle="modal" data-target="#myModal"><mat-icon aria-hidden="false">filter_list</mat-icon></button>
+        
+    
+</div>
+
+<mat-tab-group (selectedTabChange)="category($event);">
+    <mat-tab label="Category 1" ><app-products [products] = "products"></app-products>  </mat-tab>
+    <mat-tab label="Category 2"> <app-products [products] = "products"></app-products> </mat-tab>
+    <mat-tab label="Category 3"> <app-products [products] = "products"></app-products> </mat-tab>
+  </mat-tab-group>
+
+
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Filter</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+              <div class="form-group">
+                  <label>Price Range:</label><br>
+                  <input type="number" name="minimum" placeholder="minimum" [(ngModel)]="filter.priceRange.minimum"/>
+                  <input type="number" name="maximum" placeholder="maximum" [(ngModel)]="filter.priceRange.maximum"/>
+              </div>
+              <div class="form-group">
+                <label>Category:</label><br>
+                <input type="checkbox" id="category1" name="category" value="1" (change) = "captureValues($event)">
+                <label for="category1"> category1</label><br>
+                <input type="checkbox" id="category2" name="category" value="2" (change) = "captureValues($event)">
+                <label for="category2"> category2</label><br>
+                <input type="checkbox" id="category3" name="category" value="3" (change) = "captureValues($event)">
+                <label for="category3"> category3</label><br>
+            </div>
+            <div class="form-group">
+                <label>Color:</label><br>
+                <input type="checkbox" id="red" name="color" value="red" (change) = "captureValues($event)">
+                <label for="red"> red</label><br>
+                <input type="checkbox" id="green" name="color" value="green" (change) = "captureValues($event)">
+                <label for="green"> green</label><br>
+                <input type="checkbox" id="blue" name="color" value="blue" (change) = "captureValues($event)">
+                <label for="blue"> blue</label><br>
+            </div>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default btn-success" (click) = "applyFilter()" data-dismiss="modal">Apply Filter</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
